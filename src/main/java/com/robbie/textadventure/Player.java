@@ -6,68 +6,72 @@ public class Player {
 
     //Anything added here must be added to battle menu
 
-    String playerName;
-    int playerMaxHitPoints = 100;
-    int playerHitPoints = 100;
-    int playerBaseAttack = 50;
+    String name;
+    int maxHealth = 100;
+    int health = 100;
+    int baseAttack = 25;
+    int baseDefence = 5;
     Bag bag = new Bag();
-    int playerLevel = 1;
-    int playerExperience = 0;
+    int level = 1;
+    int experiencePoints = 0;
+    int maxCarryWeight = 100;
 
     //TODO: Starting weapon/armour either fists or depends on character
     Weapon equippedWeapon;
     Armour equippedArmour;
 
-    public Player(String playerName) {
-        this.playerName = playerName;
+    public Player(String name, WeaponType weaponType, ArmourType armourType) {
+        this.name = name;
+        this.equippedWeapon = new Weapon(weaponType);
+        this.equippedArmour = new Armour(armourType);
     }
 
-    public int getPlayerHitPoints() {
-        return playerHitPoints;
+    public int getHealth() {
+        return health;
     }
 
-    public void setPlayerHitPoints(int playerHitPoints) {
-        this.playerHitPoints = playerHitPoints;
+    public void setHealth(int health) {
+        this.health = health;
     }
 
-    public int getPlayerBaseAttack() {
-        return playerBaseAttack;
+    public int getBaseAttack() {
+        return baseAttack;
     }
 
-    public void setPlayerBaseAttack(int playerBaseAttack) {
-        this.playerBaseAttack = playerBaseAttack;
+    public void setBaseAttack(int baseAttack) {
+        this.baseAttack = baseAttack;
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public String getName() {
+        return name;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getPlayerMaxHitPoints() {
-        return playerMaxHitPoints;
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
-    public void setPlayerMaxHitPoints(int playerMaxHitPoints) {
-        this.playerMaxHitPoints = playerMaxHitPoints;
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
     }
 
-    public int getPlayerLevel() {
-        return playerLevel;
+    public int getLevel() {
+        return level;
     }
 
-    public void setPlayerLevel(int playerLevel) {
-        this.playerLevel = playerLevel;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public int getPlayerExperience() {
-        return playerExperience;
+    public int getExperiencePoints() {
+        return experiencePoints;
     }
 
-    public void setPlayerExperience(int playerExperience) {
-        this.playerExperience = playerExperience;
+    public void setExperiencePoints(int experiencePoints) {
+        this.experiencePoints = experiencePoints;
     }
 
     public Item getEquippedWeapon() {
@@ -84,5 +88,17 @@ public class Player {
 
     public void setEquippedArmour(Armour equippedArmour) {
         this.equippedArmour = equippedArmour;
+    }
+
+    public int getBaseDefence() {
+        return baseDefence;
+    }
+
+    public void setBaseDefence(int baseDefence) {
+        this.baseDefence = baseDefence;
+    }
+
+    public Bag getBag() {
+        return bag;
     }
 }

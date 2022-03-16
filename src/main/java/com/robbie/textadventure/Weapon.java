@@ -2,7 +2,15 @@ package com.robbie.textadventure;
 
 public class Weapon extends EquippableItem {
 
-    int weaponAttackModifier;
+    WeaponType weaponType;
+    int attackModifier;
+
+    public Weapon(WeaponType weaponType) {
+        this.weaponType = weaponType;
+        this.name = this.weaponType.getName();
+        this.attackModifier = this.weaponType.getDamage();
+        this.weight = this.weaponType.getWeight();
+    }
 
     @Override
     void use() {
@@ -12,5 +20,13 @@ public class Weapon extends EquippableItem {
     @Override
     void equip() {
         //TODO: in battle this will change turn
+    }
+
+    public int getAttackModifier() {
+        return attackModifier;
+    }
+
+    public void setAttackModifier(int attackModifier) {
+        this.attackModifier = attackModifier;
     }
 }

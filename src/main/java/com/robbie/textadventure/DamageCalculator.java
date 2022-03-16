@@ -10,25 +10,27 @@ public class DamageCalculator {
     Random rand = new Random();
     Player player;
     Enemy enemy;
-    int playerDamage;
-    int enemyDamage;
 
     public DamageCalculator(Player player, Enemy enemy) {
         this.player = player;
         this.enemy = enemy;
-        this.playerDamage = this.player.getPlayerBaseAttack(); // Add multipliers here
-        this.enemyDamage = this.enemy.getEnemyBaseAttack();
     }
 
     int calculatePlayerDamageTaken() {
-        enemyDamage = enemyDamage + rand.nextInt(-(enemyDamage/10), enemyDamage/10);
-        System.out.printf("The enemy %s did %d damage! %n", enemy.getEnemyName(), enemyDamage);
+        int enemyDamage = enemy.getAttackStat();
+        enemyDamage = enemyDamage
+                + rand.nextInt(-(enemyDamage/10), enemyDamage/10)
+                - (player.getBaseDefence() + player.equippedArmour.getDefenceModifier());
+        System.out.printf("The enemy %s did %d damage! %n", enemy.getName(), enemyDamage);
         return enemyDamage;
     }
 
     int calculateEnemyDamageTaken() {
-        playerDamage = playerDamage + rand.nextInt(-(playerDamage/10), playerDamage/10);
-        System.out.printf("%s did %d damage! %n", player.getPlayerName(), playerDamage);
+        int playerDamage = player.getBaseAttack();
+        playerDamage = playerDamage
+                + rand.nextInt(-(playerDamage/10), playerDamage/10)
+                + player.equippedWeapon.getAttackModifier();
+        System.out.printf("%s did %d damage! %n", player.getName(), playerDamage);
         return playerDamage;
     }
 }

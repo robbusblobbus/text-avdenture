@@ -21,7 +21,7 @@ public class Battle {
         boolean battleOver = false;
         DamageCalculator damageCalculator = new DamageCalculator(player, enemy);
 
-        System.out.printf("A wild %s appeared!%n", enemy.getEnemyName());
+        System.out.printf("A wild %s appeared!%n", enemy.getName());
         System.out.println("---------------------------------------------------------------------");
 
         while(!battleOver) {
@@ -29,8 +29,8 @@ public class Battle {
             System.out.printf("--Turn %d-- %n", turnNumber);
             System.out.println("What would you like to do? \n A) Attack \n B) Bag \n C) Run \n D) Menu ");
             System.out.printf("%s's health: %d/%d     Enemy health: %d/%d %n",
-                    player.getPlayerName(), player.getPlayerHitPoints(), player.getPlayerMaxHitPoints(),
-                    enemy.getEnemyMaxHitPoints(), enemy.getEnemyHitPoints());
+                    player.getName(), player.getHealth(), player.getMaxHealth(),
+                    enemy.getHealth(), enemy.getMaxHealth());
 
             boolean validInput = false;
 
@@ -41,17 +41,18 @@ public class Battle {
                     case ("a"), ("A") -> {
                         validInput = true;
                         turnNumber++;
-                        enemy.setEnemyHitPoints(enemy.getEnemyHitPoints() - damageCalculator.calculateEnemyDamageTaken());
-                        if (enemy.getEnemyHitPoints() <= 0) {
-                            System.out.printf("%s killed the enemy %s!", player.getPlayerName(), enemy.getEnemyName());
+                        enemy.setHealth(enemy.getHealth() - damageCalculator.calculateEnemyDamageTaken());
+                        if (enemy.getHealth() <= 0) {
+                            System.out.printf("%s killed the enemy %s!", player.getName(), enemy.getName());
                             break;
                         }
-                        player.setPlayerHitPoints(player.getPlayerHitPoints() - damageCalculator.calculatePlayerDamageTaken());
+                        player.setHealth(player.getHealth() - damageCalculator.calculatePlayerDamageTaken());
                     }
-                    case ("b"), ("B") ->
-                            //validInput = true;
-                            // Do bag stuff -- make sure to increment turn if you do something
-                            System.out.println("Bag functionality under construction -- enter something else");
+                    case ("b"), ("B") -> {
+                        validInput = true;
+                        BagMenu bagMenu = new BagMenu(player);
+                        bagMenu.execute();
+                    }
                     case ("c"), ("C") -> {
                         validInput = true;
                         battleOver = true;
@@ -59,7 +60,6 @@ public class Battle {
                         System.out.println("You narrowly escaped!");
                     }
                     case ("d"), ("D") -> {
-                        // Do menu stuff like see stats
                         validInput = true;
                         BattleMenu battleMenu = new BattleMenu(player, enemy);
                         battleMenu.execute();
@@ -69,7 +69,7 @@ public class Battle {
                 System.out.println("---------------------------------------------------------------------");
             }
 
-            if (enemy.getEnemyHitPoints() <= 0 || player.getPlayerHitPoints() <=0) battleOver = true;
+            if (enemy.getHealth() <= 0 || player.getHealth() <=0) battleOver = true;
         }
     }
 }

@@ -5,19 +5,21 @@ package com.robbie.textadventure;
 public class Enemy {
 
     EnemyType enemyType;
-    private String enemyName;
-    private int enemyMaxHitPoints;
-    private int enemyHitPoints;
-    private int enemyBaseAttack;
-    private int enemyExperienceDrop;
+    private String name;
+    private int maxHealth;
+    private int health;
+    private int attackStat;
+    private int defenceStat;
+    private int experienceDrop;
 
     public Enemy() {
         this.enemyType = EnemyType.randomEnemy();
-        this.enemyName = this.enemyType.getName();
-        this.enemyMaxHitPoints = this.enemyType.getEnemyHitPoints();
-        this.enemyHitPoints = this.enemyMaxHitPoints;
-        this.enemyBaseAttack = this.enemyType.getEnemyBaseAttack();
-        this.enemyExperienceDrop = this.enemyType.getExperienceDrop();
+        this.name = this.enemyType.getName();
+        this.maxHealth = this.enemyType.getMaxHealth();
+        this.health = this.maxHealth;
+        this.attackStat = this.enemyType.getAttackStat();
+        this.defenceStat = this.enemyType.getDefenceStat();
+        this.experienceDrop = this.enemyType.getExperienceDrop();
     }
 
     public EnemyType getEnemyType() {
@@ -28,35 +30,51 @@ public class Enemy {
         this.enemyType = enemyType;
     }
 
-    public String getEnemyName() {
-        return enemyName;
+    public String getName() {
+        return name;
     }
 
-    public void setEnemyName(String enemyName) {
-        this.enemyName = enemyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getEnemyMaxHitPoints() {
-        return enemyMaxHitPoints;
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
-    public void setEnemyMaxHitPoints(int enemyMaxHitPoints) {
-        this.enemyMaxHitPoints = enemyMaxHitPoints;
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
     }
 
-    public int getEnemyBaseAttack() {
-        return enemyBaseAttack;
+    public int getAttackStat() {
+        return attackStat;
     }
 
-    public void setEnemyBaseAttack(int enemyBaseAttack) {
-        this.enemyBaseAttack = enemyBaseAttack;
+    public void setAttackStat(int attackStat) {
+        this.attackStat = attackStat;
     }
 
-    public int getEnemyHitPoints() {
-        return enemyHitPoints;
+    public int getHealth() {
+        return health;
     }
 
-    public void setEnemyHitPoints(int enemyHitPoints) {
-        this.enemyHitPoints = enemyHitPoints;
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getDefenceStat() {
+        return defenceStat;
+    }
+
+    public void setDefenceStat(int defenceStat) {
+        this.defenceStat = defenceStat;
+    }
+
+    public int getExperienceDrop() {
+        return experienceDrop;
+    }
+
+    public void setExperienceDrop(int experienceDrop) {
+        this.experienceDrop = experienceDrop;
     }
 }

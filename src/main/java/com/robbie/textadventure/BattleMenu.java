@@ -21,9 +21,6 @@ public class BattleMenu {
         while(menuOpen) {
 
             System.out.println("Battle Menu: \n A) Player Info \n B) Enemy Info \n C) Back ");
-            System.out.printf("%s's health: %d/%d     Enemy health: %d/%d %n",
-                    player.getPlayerName(), player.getPlayerHitPoints(), player.getPlayerMaxHitPoints(),
-                    enemy.getEnemyMaxHitPoints(), enemy.getEnemyHitPoints());
 
             boolean validInput = false;
 
@@ -33,26 +30,26 @@ public class BattleMenu {
                 switch (input) {
                     case ("a"), ("A") -> {
                         validInput = true;
-                        System.out.printf("Name: %s, Level %d %n", player.getPlayerName(), player.getPlayerLevel());
-                        System.out.printf("HP: %d/%d %n",
-                                player.getPlayerName(), player.getPlayerHitPoints(), player.getPlayerMaxHitPoints());
-                        System.out.printf("Base attack: %d %n", player.getPlayerName(), player.getPlayerBaseAttack());
-                        System.out.printf("Equipped weapon: %s", player.getEquippedWeapon().getName());
-                        System.out.printf("Equipped armour: %s", player.getEquippedArmour().getName());
-
-
+                        System.out.printf("Name: %s, Level %d %n", player.getName(), player.getLevel());
+                        System.out.printf("HP: %d/%d %n", player.getHealth(), player.getMaxHealth());
+                        System.out.printf("Base attack: %d %n", player.getBaseAttack());
+                        System.out.printf("Base defense: %d %n", player.getBaseDefence());
+                        System.out.printf("Equipped weapon: %s, Attack modifier: +%d %n",
+                                player.getEquippedWeapon().getName(), player.equippedWeapon.getAttackModifier());
+                        System.out.printf("Equipped armour: %s, Defense modifier: +%d %n",
+                                player.getEquippedArmour().getName(), player.equippedArmour.getDefenceModifier());
+                        System.out.printf("XP: %d %n", player.getExperiencePoints());
+                        //TODO: XP to next level
                     }
-                    case ("b"), ("B") ->
-                            //validInput = true;
-                            // Do bag stuff -- make sure to increment turn if you do something
-                            System.out.println("Bag functionality under construction -- enter something else");
-                    case ("c"), ("C") -> {
+                    case ("b"), ("B") -> {
                         validInput = true;
-                        // Add random run effects? E.g. run chance, maybe take some damage
-                        System.out.println("You narrowly escaped!");
+                        System.out.printf("Enemy: %s %n", enemy.getName());
+                        System.out.printf("HP: %d/%d %n", enemy.getHealth(), enemy.getMaxHealth());
+                        System.out.printf("Base attack: %d %n", enemy.getAttackStat());
+                        System.out.printf("Base defense: %d %n", enemy.getDefenceStat());
+                        //TODO: add type or similar
                     }
-                    case ("d"), ("D") -> {
-                        // Do menu stuff like see stats
+                    case ("c"), ("C") -> {
                         validInput = true;
                         menuOpen = false;
                     }
@@ -60,8 +57,6 @@ public class BattleMenu {
                 }
                 System.out.println("---------------------------------------------------------------------");
             }
-
-            if (enemy.getEnemyHitPoints() <= 0 || player.getPlayerHitPoints() <=0) menuOpen = true;
         }
     }
 }

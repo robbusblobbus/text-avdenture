@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Random;
 
 public enum EnemyType {
-    GOBLIN ("Goblin",75, 25,  5),
-    BAT ("Bat",50, 12, 10),
-    UNICORN ("Unicorn",150, 30, 20); // etc.
+    GOBLIN ("Goblin",75, 25, 12,  5),
+    BAT ("Bat",50, 12, 5, 10),
+    UNICORN ("Unicorn",150, 10, 20, 20);
 
     private final String name;
-    private final int enemyHitPoints;
-    private final int enemyBaseAttack;
+    private final int maxHealth;
+    private final int attackStat;
+    private final int defenceStat;
     private final int experienceDrop;
 
     private static final List<EnemyType> ENEMY_TYPES =
@@ -25,10 +26,11 @@ public enum EnemyType {
     // Maybe base drop rate or drop item?
     // Rarity
 
-    EnemyType(String name, int enemyHitPoints, int enemyBaseAttack, int experienceDrop) {
+    EnemyType(String name, int maxHealth, int attackStat, int defenceStat, int experienceDrop) {
         this.name = name;
-        this.enemyHitPoints = enemyHitPoints;
-        this.enemyBaseAttack = enemyBaseAttack;
+        this.maxHealth = maxHealth;
+        this.attackStat = attackStat;
+        this.defenceStat = defenceStat;
         this.experienceDrop = experienceDrop;
     }
 
@@ -40,15 +42,19 @@ public enum EnemyType {
         return name;
     }
 
-    public int getEnemyHitPoints() {
-        return enemyHitPoints;
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
-    public int getEnemyBaseAttack() {
-        return enemyBaseAttack;
+    public int getAttackStat() {
+        return attackStat;
     }
 
     public int getExperienceDrop() {
         return experienceDrop;
+    }
+
+    public int getDefenceStat() {
+        return defenceStat;
     }
 }
