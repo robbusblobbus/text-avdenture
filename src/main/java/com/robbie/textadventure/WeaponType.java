@@ -3,7 +3,12 @@ package com.robbie.textadventure;
 public enum WeaponType {
 
     FISTS("Fists", 5, 0),
-    SWORD("Sword", 15, 10);
+    SWORD("Sword", 15, 10),
+    MAGIC_STAFF("Magic Staff", 10, 5),
+    BASIC_STAFF("Basic Staff", 5, 5),
+    DAGGER("Dagger", 8, 2),
+    WOODEN_BOW("Wooden Bow", 10, 5),
+    LUTE("Lute", 7, 8);
 
     private final String name;
     private final int damage;

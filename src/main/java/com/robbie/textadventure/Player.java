@@ -7,23 +7,31 @@ public class Player {
     //Anything added here must be added to battle menu
 
     String name;
-    int maxHealth = 100;
-    int health = 100;
-    int baseAttack = 25;
-    int baseDefence = 5;
+    PlayerType playerType;
+    int maxHealth;
+    int health;
+    int baseAttack;
+    int baseDefence;
     Bag bag = new Bag();
     int level = 1;
     int experiencePoints = 0;
-    int maxCarryWeight = 100;
+    int maxCarryWeight;
 
     //TODO: Starting weapon/armour either fists or depends on character
+    //TODO: Add mana/some sort of magic store
     Weapon equippedWeapon;
     Armour equippedArmour;
 
-    public Player(String name, WeaponType weaponType, ArmourType armourType) {
+    public Player(String name, PlayerType playerType) {
         this.name = name;
-        this.equippedWeapon = new Weapon(weaponType);
-        this.equippedArmour = new Armour(armourType);
+        this.playerType = playerType;
+        this.maxHealth = this.playerType.getMaxHealth();
+        this.health = maxHealth;
+        this.baseAttack = this.playerType.getBaseAttack();
+        this.baseDefence = this.playerType.getBaseDefence();
+        this.maxCarryWeight = this.playerType.getMaxCarryWeight();
+        this.equippedWeapon = new Weapon(this.playerType.getStartingWeapon());
+        this.equippedArmour = new Armour(this.playerType.getStartingArmour());
     }
 
     public int getHealth() {

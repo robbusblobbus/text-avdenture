@@ -38,12 +38,13 @@ public class Battle {
 
                 String input = sc.nextLine();
                 switch (input) {
+                    //TODO: Attack can use weapon or power
                     case ("a"), ("A") -> {
                         validInput = true;
                         turnNumber++;
                         enemy.setHealth(enemy.getHealth() - damageCalculator.calculateEnemyDamageTaken());
                         if (enemy.getHealth() <= 0) {
-                            System.out.printf("%s killed the enemy %s!", player.getName(), enemy.getName());
+                            System.out.printf("%s killed the enemy %s! %n", player.getName(), enemy.getName());
                             break;
                         }
                         player.setHealth(player.getHealth() - damageCalculator.calculatePlayerDamageTaken());

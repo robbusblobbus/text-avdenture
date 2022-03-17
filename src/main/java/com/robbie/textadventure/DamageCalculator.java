@@ -3,7 +3,6 @@ package com.robbie.textadventure;
 import java.util.Random;
 
 //TODO Work out damage with items and any multipliers, status effects
-//TODO Include armor in damage calculation
 
 public class DamageCalculator {
 
@@ -21,6 +20,7 @@ public class DamageCalculator {
         enemyDamage = enemyDamage
                 + rand.nextInt(-(enemyDamage/10), enemyDamage/10)
                 - (player.getBaseDefence() + player.equippedArmour.getDefenceModifier());
+        if (enemyDamage < 5) enemyDamage = 5; //TODO: 5 = minimum damage?
         System.out.printf("The enemy %s did %d damage! %n", enemy.getName(), enemyDamage);
         return enemyDamage;
     }
