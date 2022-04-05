@@ -4,6 +4,7 @@ public abstract class Item {
 
     int weight;
     String name;
+    boolean usableInBattle;
 
     public abstract void use();
 
@@ -23,5 +24,13 @@ public abstract class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isUsableInBattle() {
+        return usableInBattle;
+    }
+
+    public void setUsableInBattle(boolean usableInBattle) {
+        this.usableInBattle = usableInBattle;
     }
 }

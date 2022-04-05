@@ -1,6 +1,5 @@
 // TODO Custom player creation
 // TODO Battle mechanics
-// TODO Input checker
 // TODO Levels?
 // TODO Enemy strengths/weaknesses
 // TODO Save game

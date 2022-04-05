@@ -7,11 +7,13 @@ public class Armour extends EquippableItem {
     ArmourType armourType;
     int defenceModifier;
 
-    public Armour(ArmourType armourType){
+    {usableInBattle = false;}
+
+    public Armour(ArmourType armourType) {
         this.armourType = armourType;
-        this.name = this.armourType.getName();
-        this.defenceModifier = this.armourType.getDefenceModifier();
-        this.weight = this.armourType.getWeight();
+        this.name = armourType.getName();
+        this.defenceModifier = armourType.getDefenceModifier();
+        this.weight = armourType.getWeight();
     }
 
     @Override

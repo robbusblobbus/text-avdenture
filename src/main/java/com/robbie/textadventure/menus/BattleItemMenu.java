@@ -20,31 +20,30 @@ public class BattleItemMenu extends Menu {
 
             validInput = false;
             System.out.printf("What would you like to do with your %s? %n", item.getName().toLowerCase());
-            System.out.println(" A) Use/Equip \n B) Inspect \n C) Nothing");
+            System.out.println(" A) Use \n B) Inspect \n C) Back");
 
-            while (!validInput) {
-
-                String input = sc.nextLine();
-                switch (input) {
-                    case ("a"), ("A") -> {
-                        validInput = true;
+            String input = sc.nextLine();
+            switch (input) {
+                case ("a"), ("A") -> {
+                    if (item.isUsableInBattle() == true) {
                         if (InputAnalyser.areYouSure("Would you like to use your " + item.getName() + "?")) {
                             item.use();
                             menuOpen = false;
                         }
+                    } else {
+                        System.out.printf("You can't use your %s in battle! %n", item.getName().toLowerCase());
                     }
-                    case ("b"), ("B") -> {
-                        validInput = true;
-                        item.displayDetails();
-                    }
-                    case ("c"), ("C") -> {
-                        validInput = true;
-                        menuOpen = false;
-                    }
-                    default -> System.out.println("Please enter a valid input");
                 }
-                System.out.println("---------------------------------------------------------------------");
+                case ("b"), ("B") -> {
+                    item.displayDetails();
+                }
+                case ("c"), ("C") -> {
+                    menuOpen = false;
+                }
+                default -> System.out.println("Please enter a valid input");
             }
+            System.out.println("---------------------------------------------------------------------");
         }
     }
 }
+

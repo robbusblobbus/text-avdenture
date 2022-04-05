@@ -29,7 +29,7 @@ public class BagMenu extends Menu {
         while(menuOpen) {
 
             bag.listItems();
-            System.out.println("0: Exit ");
+            System.out.println("0: Close Bag");
             validInput = false;
 
             while (!validInput) {

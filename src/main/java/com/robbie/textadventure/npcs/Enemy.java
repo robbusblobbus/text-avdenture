@@ -15,13 +15,13 @@ public class Enemy {
 
     public Enemy() {
         this.enemyType = EnemyType.randomEnemy();
-        this.name = this.enemyType.getName();
-        this.maxHealth = this.enemyType.getMaxHealth();
-        this.health = this.maxHealth;
-        this.attackStat = this.enemyType.getAttackStat();
-        this.defenceStat = this.enemyType.getDefenceStat();
-        this.speedStat = this.enemyType.getSpeedStat();
-        this.experienceDrop = this.enemyType.getExperienceDrop();
+        this.name = enemyType.getName();
+        this.maxHealth = enemyType.getMaxHealth();
+        this.health = maxHealth;
+        this.attackStat = enemyType.getAttackStat();
+        this.defenceStat = enemyType.getDefenceStat();
+        this.speedStat = enemyType.getSpeedStat();
+        this.experienceDrop = enemyType.getExperienceDrop();
     }
 
     public EnemyType getEnemyType() {

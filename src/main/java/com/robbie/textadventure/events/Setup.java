@@ -1,5 +1,7 @@
 package com.robbie.textadventure.events;
 
+import com.robbie.textadventure.items.BattleItem;
+import com.robbie.textadventure.items.BattleItemType;
 import com.robbie.textadventure.player.Player;
 import com.robbie.textadventure.player.PlayerType;
 import com.robbie.textadventure.utils.InputAnalyser;
@@ -74,6 +76,7 @@ public class Setup {
 
         player.getBag().addToBag(player.getEquippedArmour());
         player.getBag().addToBag(player.getEquippedWeapon());
+        player.getBag().addToBag(new BattleItem(BattleItemType.SMALL_HEALTH_POTION));
         return player;
     }
 }

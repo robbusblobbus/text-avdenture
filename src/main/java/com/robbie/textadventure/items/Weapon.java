@@ -9,9 +9,9 @@ public class Weapon extends EquippableItem {
 
     public Weapon(WeaponType weaponType) {
         this.weaponType = weaponType;
-        this.name = this.weaponType.getName();
-        this.attackModifier = this.weaponType.getDamage();
-        this.weight = this.weaponType.getWeight();
+        this.name = weaponType.getName();
+        this.attackModifier = weaponType.getDamage();
+        this.weight = weaponType.getWeight();
     }
 
     @Override

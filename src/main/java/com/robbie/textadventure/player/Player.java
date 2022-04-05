@@ -28,14 +28,14 @@ public class Player {
     public Player(String name, PlayerType playerType) {
         this.name = name;
         this.playerType = playerType;
-        this.maxHealth = this.playerType.getMaxHealth();
+        this.maxHealth = playerType.getMaxHealth();
         this.health = maxHealth;
-        this.baseAttack = this.playerType.getBaseAttack();
-        this.baseDefence = this.playerType.getBaseDefence();
-        this.baseSpeed = this.playerType.getBaseSpeed();
-        this.maxCarryWeight = this.playerType.getMaxCarryWeight();
-        this.equippedWeapon = new Weapon(this.playerType.getStartingWeapon());
-        this.equippedArmour = new Armour(this.playerType.getStartingArmour());
+        this.baseAttack = playerType.getBaseAttack();
+        this.baseDefence = playerType.getBaseDefence();
+        this.baseSpeed = playerType.getBaseSpeed();
+        this.maxCarryWeight = playerType.getMaxCarryWeight();
+        this.equippedWeapon = new Weapon(playerType.getStartingWeapon());
+        this.equippedArmour = new Armour(playerType.getStartingArmour());
     }
 
     public int getHealth() {
